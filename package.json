@@ -1,21 +1,21 @@
 {
-  "name": "full-bot",
+  "name": "discord-bot-template",
   "version": "1.0.0",
-  "description": "Bot do discord primariamente focado em musica, com desenvolvimento em twitch.tv/thomasar",
+  "description": "Templete para criacao de bots para o discord",
   "main": "index.js",
   "scripts": {
     "start": "node ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomasreichmann/full-bot.git"
+    "url": "git+https://github.com/thomasreichmann/discord-bot-template.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thomasreichmann/full-bot/issues"
+    "url": "https://github.com/thomasreichmann/discord-bot-template/issues"
   },
-  "homepage": "https://github.com/thomasreichmann/full-bot#readme",
+  "homepage": "https://github.com/thomasreichmann/discord-bot-template#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
