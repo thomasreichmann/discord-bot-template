@@ -25,7 +25,7 @@ Todo comando tem uma quantidade de  metadata que pode ser atribuida a ele:
 |   aliases   |    `nao`   | `string[]` |                                                Alternativas para o comando                                               | `aliases: ['template', 'templote']` |
 |    usage    |    `nao`   |  `string`  |                                               Como o comando deve ser usado                                              |         `usage: play [link]`        |
 |   cooldown  |    `nao`   |  `number`  |                                                    Cooldown do comando                                                   |            `cooldown: 5`            |
-| permissions |    `nao`   |  `number`  | [Permission integer](https://discordapi.com/permissions.html) indicando as permissoes necessarias para usar esse comando |         `permissions: 8192`         |
+| permission |    `nao`   |  `number`  | [Permission integer](https://discordapi.com/permissions.html) indicando as permissoes necessarias para usar esse comando |         `permission: 8192`         |
 |     ids     |    `nao`   | `string[]` |                                       IDs dos usuarios que podem usar esse comando                                       |    `ids: ['181270590672338944']`    |
 |   hideHelp  |    `nao`   |  `boolean` |                                         Se o comando deve ser escondido do !help                                         |           `hideHelp: true`          |
 # Eventos
