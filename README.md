@@ -12,6 +12,15 @@ Esse repo tem como intuito:
         -   Exclusividade por guild
         -   Exclusividade por usuario
 
+# Como usar
+
+Para usar esse template como base para um bot:
+
+-   Crie um `fork` ou de `git clone` no repositorio
+-   Ajuste os detalhes como nome, autor e repositorio em arquivos como `package.json`
+-   Crie um arquivo `.env` com uma variavel `TOKEN = SEU_BOT_TOKEN_DO_DISCORD`
+-   Use `npm start` para iniciar o bot
+
 # Comandos
 
 Para criar um comando novo, utilize como base o `templateCommand.js` como base e crie um arquivo na pasta comandos com o nome principal do comando
@@ -32,3 +41,17 @@ Todo comando tem uma quantidade de metadata que pode ser atribuida a ele:
 # Eventos
 
 Para adicionar mais eventos ao `Event Handler`, use como base o `templateEvent.js` e crie um arquivo na pasta events com o nome exato do [evento](https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-channelCreate)
+
+# Comandos padrao do bot
+
+Todos esses comandos podem ser deletados como voce achar valido, nenhum deles é necessario para o funcionamento do bot.
+
+| Comando | Uso                                                                              |
+|---------|----------------------------------------------------------------------------------|
+| help    | Lista todos os comandos do bot de forma automática                               |
+| invite  | Gera um link para convidar o bot para um servidor                                |
+| ping    | Testa o delay entre o bot receber uma mensagem e responder                       |
+| reload  | Recarrega os comandos do bot. Util para usar durante desenvolvimento             |
+| roll    | Escolhe um numero de 1 a 100                                                     |
+| spam    | Entra e sai de um canal de voz 10 vezes                                          |
+| stats   | Mostra a quantidade de servidores em que o bot esta e o numero de usuarios total |
