@@ -4,8 +4,8 @@ module.exports = {
 	name: 'invite',
 	description: 'Mostra o link de invite do bot',
 	usage: 'invite',
-	execute(/** @type {Discord.Client} */ client, /** @type {Discord.Message} */ message, args) {
-		let link = 'https://discordapp.com/oauth2/authorize?client_id=482753018652262401&scope=bot&permissions=8';
+	async execute(/** @type {Discord.Client} */ client, /** @type {Discord.Message} */ message, args) {
+		let link = await client.generateInvite(8);
 
 		let embed = new Discord.MessageEmbed()
 			.setColor(client.config.color)
