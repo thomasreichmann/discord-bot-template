@@ -3,20 +3,9 @@ if (process.env.NODE_ENV != 'production') {
 	console.log('Dev mode');
 }
 
-const Discord = require('discord.js');
+import fs from 'fs';
+import Discord from 'discord.js';
 const client = new Discord.Client();
-const Enmap = require('enmap');
-
-const fs = require('fs');
-
-client.commands = new Enmap();
-
-client.ghost = false;
-
-client.config = require('./config.json');
-if(process.env.NODE_ENV != 'production') {
-	client.config.prefix = ',';
-}
 
 fs.readdir('./events', (err, files) => {
 	if (err) return console.log(`Erro ao carregar os arquivos de eventos\n${err}`);
@@ -42,11 +31,11 @@ fs.readdir('./commands/', (err, files) => {
 		let commandName = file.split('.')[0];
 		console.log(`Carregando o comando ${commandName}`);
 
-		client.commands.set(commandName, props);
+		// client.commands.set(commandName, props);
 	});
 });
 
-client.on('error', (e) => console.error(e));
-client.on('warn', (e) => console.warn(e));
+client.on('error', e => console.error(e));
+client.on('warn', e => console.warn(e));
 
 client.login(process.env.TOKEN);

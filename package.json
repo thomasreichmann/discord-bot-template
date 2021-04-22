@@ -23,5 +23,8 @@
 		"enmap": "^5.8.4",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.2.4"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.41"
 	}
 }
