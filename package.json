@@ -4,7 +4,7 @@
 	"description": "Templete para criacao de bots para o discord",
 	"main": "index.js",
 	"scripts": {
-		"start": "node ."
+		"start": "ts-node index.ts"
 	},
 	"repository": {
 		"type": "git",

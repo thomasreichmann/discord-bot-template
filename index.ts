@@ -3,37 +3,37 @@ if (process.env.NODE_ENV != 'production') {
 	console.log('Dev mode');
 }
 
-import fs from 'fs';
 import Discord from 'discord.js';
-const client = new Discord.Client();
+import EventController from './controllers/EventController';
 
-fs.readdir('./events', (err, files) => {
-	if (err) return console.log(`Erro ao carregar os arquivos de eventos\n${err}`);
-	files.forEach(file => {
-		if (!file.endsWith('.js')) return;
+import fs from 'fs/promises';
+import ClientController from './controllers/ClientController';
 
-		const event = require(`./events/${file}`);
+ClientController.client = new Discord.Client();
 
-		let eventName = file.split('.')[0];
+let client = ClientController.client;
 
-		client.on(eventName, event.bind(null, client));
-		delete require.cache[require.resolve(`./events/${file}`)];
-	});
-});
+(async () => {
+	// Loading all command and effect files so that decorators get executed
+	await loadSideEffects();
 
-fs.readdir('./commands/', (err, files) => {
-	if (err) return console.error(err);
-	files.forEach(file => {
-		if (!file.endsWith('.js')) return;
+	// Adding the events to the discord client
+	for (let event of EventController.events) {
+		client.on(event.name, event.exec);
+	}
+})();
 
-		let props = require(`./commands/${file}`);
+async function loadSideEffects() {
+	let files = await fs.readdir('./events');
+	for (let file of files) {
+		require(`./events/${file}`);
+	}
 
-		let commandName = file.split('.')[0];
-		console.log(`Carregando o comando ${commandName}`);
-
-		// client.commands.set(commandName, props);
-	});
-});
+	files = await fs.readdir('./commands');
+	for (let file of files) {
+		require(`./commands/${file}`);
+	}
+}
 
 client.on('error', e => console.error(e));
 client.on('warn', e => console.warn(e));
