@@ -1,17 +1,26 @@
-const Discord = require('discord.js');
+import { Message } from 'discord.js';
+import ClientController from '../controllers/ClientController';
+import CommandController, { chatCommand, Command } from '../controllers/CommandController';
+import ConfigController from '../controllers/ConfigController';
+import Discord from 'discord.js';
 
-module.exports = {
-	name: 'help',
-	description: 'Lista todos os comandos do bot.',
-	aliases: ['ajuda'],
-	usage: 'help',
-	execute(/** @type {Discord.Client} */ client, /** @type {Discord.Message} */ message, args) {
-		let prefix = client.config.prefix;
-		let commands = client.commands;
+@chatCommand()
+class Help implements Command {
+	name = 'help';
+	aliases = ['h', 'ajuda'];
+	description = 'Lista todos os comandos do bot.';
+	usage = 'help';
 
-		if(!args.length) {
+	async exec(message: Message, args: string[]) {
+		let prefix = ConfigController.prefix;
+		let commands = CommandController.commands;
+
+		if (!args.length) {
 			// Caso o comando tenha hideHelp, nao mostramos ele no help
-			let c = commands.filter(command => !command.hideHelp).map(command => `\`${command.name}\``).join(', ');
+			let c = commands
+				.filter(command => !command.hideHelp)
+				.map(command => `\`${command.name}\``)
+				.join(', ');
 			let embed = new Discord.MessageEmbed()
 				.addField('Aqui esta uma lista dos meus comandos:', c)
 				.setFooter(`Mande '${prefix}help [comando]' para ver um comando especifico`);
@@ -20,7 +29,7 @@ module.exports = {
 		}
 
 		let name = args[0].toLowerCase();
-		let command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+		let command = CommandController.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
 		if (!command) {
 			return message.reply('Isso nao e um comando valido');
@@ -37,5 +46,5 @@ module.exports = {
 
 		embed.addField(`**Nome:** \`${command.name}\`\n`, data);
 		message.channel.send(embed);
-	},
-};
+	}
+}
