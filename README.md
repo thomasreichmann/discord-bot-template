@@ -1,3 +1,5 @@
+### Documentacao desatualizada!
+
 # Info
 
 Esse repo tem como intuito:
@@ -47,7 +49,7 @@ Para adicionar mais eventos ao `Event Handler`, use como base o `templateEvent.j
 Todos esses comandos podem ser deletados como voce achar valido, nenhum deles é necessario para o funcionamento do bot.
 
 | Comando | Uso                                                                              |
-|---------|----------------------------------------------------------------------------------|
+| ------- | -------------------------------------------------------------------------------- |
 | help    | Lista todos os comandos do bot de forma automática                               |
 | invite  | Gera um link para convidar o bot para um servidor                                |
 | ping    | Testa o delay entre o bot receber uma mensagem e responder                       |
